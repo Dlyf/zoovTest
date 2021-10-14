@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Zoov msg="Welcome to Your Vue.js App"/>
+    <ZoovMap />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Zoov from './components/Zoov.vue'
+import ZoovMap from './components/ZoovMap.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Zoov,
+    ZoovMap
   }
 }
 </script>
