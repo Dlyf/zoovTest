@@ -3,13 +3,15 @@
     <h1>Bike List Map</h1>
       <ul>
         <!-- recuperate and display data -->
-        <li v-for="item in bikes" :key="item.id">
-          {{item.id}}, {{item.serial_number}}
+        <li v-for="(bike, item) in bikes" :key="item.id">
+         {{item}}, {{bike.id}}, {{bike.serial_number}}
         </li>
       </ul>
-        <div>
-          {{bikes}}
-        </div>
+        <!-- display all data -->
+       
+          <ZoovMap />
+          <!-- <zoov-map/> -->
+
   </div>
 
 </template>
@@ -19,10 +21,9 @@ import axios from 'axios';
 import ZoovMap from './ZoovMap.vue';
 
 export default {
-
   name: 'Bikes',
-  component: {ZoovMap},
-  data() {
+  components: { ZoovMap },
+  data: function () {
     return {
       bikes: []
     };

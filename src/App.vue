@@ -1,20 +1,16 @@
 <template>
   <div id="app">
     <Zoov msg="Welcome to Your Vue.js App"/>
-    <ZoovMap />
+    <!-- <ZoovMap /> -->
   </div>
 </template>
 
 <script>
 import Zoov from './components/Zoov.vue'
-import ZoovMap from './components/ZoovMap.vue'
-
 export default {
   name: 'App',
   components: {
-    Zoov,
-    ZoovMap
-  }
+    Zoov  }
 }
 </script>
 
