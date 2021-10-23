@@ -8,7 +8,6 @@
         </li>
       </ul>
         <!-- display all data -->
-       
           <ZoovMap />
           <!-- <zoov-map/> -->
 

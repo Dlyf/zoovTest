@@ -15,7 +15,7 @@
             }"
         /> -->
         <!-- <mapboxgl /> -->
-        <h2>Map</h2>
+        <h2>map</h2>
 
            <!-- <MglMap :accessToken="accessToken" :mapStyle="mapStyle" /> -->
 
@@ -26,6 +26,7 @@
 <script>
 // import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 import mapboxgl   from 'mapbox-gl/dist/mapbox-gl.js';
+import 'mapbox-gl/dist/mapbox-gl.css';
 // bug with this package ?
 // import Mapbox from "mapbox-gl";
 // import { MglMap } from "vue-mapbox";
@@ -46,24 +47,24 @@ export default {
     new mapboxgl.Map({
       container: "mapContainer",
       style: "mapbox://styles/mapbox/streets-v11",
-      center: [103.811279, 1.345399],
+      center: [-74.5, 40],
       zoom: 12,
-      maxBounds: [
-        [103.6, 1.1704753],
-        [104.1, 1.4754753],
-      ],
+      // maxBounds: [
+      //   [103.6, 1.1704753],
+      //   [104.1, 1.4754753],
+      // ],
     });
   },
 }
 </script>
 
 <style scoped>
-/* #map {
-  width: 100%;
-  height: 500px;
-} */
+
 .basemap {
-  width: 100%;
-  height: 100%;
+  /* margin-top: 300px; */
+  height: 100vh;
+
 }
+
+
 </style>
