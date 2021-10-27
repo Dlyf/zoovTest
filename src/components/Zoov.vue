@@ -4,11 +4,11 @@
       <ul>
         <!-- recuperate and display data -->
         <li v-for="(bike, item) in bikes" :key="item.id">
-         {{item}}, {{bike.id}}, {{bike.serial_number}}
+         {{item}}, {{bike.serial_number}}, {{bike.location.coordinates}}
         </li>
       </ul>
         <!-- display all data -->
-          <ZoovMap />
+          <ZoovMap :bikes="bikes" />
           <!-- <zoov-map/> -->
 
   </div>
