@@ -4,7 +4,7 @@
       <ul>
         <!-- recuperate and display data -->
         <li v-for="(bike, item) in bikes" :key="item.id">
-         {{item}}, {{bike.serial_number}}, {{bike.location.coordinates}}
+         {{item}}, {{bike.serial_number}}, {{bike.location.coordinates}}, {{bike.service_status}}
         </li>
       </ul>
         <!-- display all data -->
@@ -37,7 +37,7 @@ export default {
         console.log("test", res.data.bikes)
       //   this.bikes = r.data
       // })
-      this.bikes = res.data.bikes
+      this.bikes = res.data.bikes.filter(res => res)
     } catch (e) {
       console.error(e);
     }

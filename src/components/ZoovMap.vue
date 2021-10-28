@@ -2,7 +2,18 @@
     <div id="mapContainer" class="basemap">
         <l-map style="height: 300px" :zoom="zoom" :center="center">
           <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-          <l-marker :lat-lng="markerLatLng"></l-marker>
+          <l-marker
+           :key="item.id"
+           v-for="(bike, item) in bikes"
+           :lat-lng="latLng(bike.location.coordinates, bike.service_status)"
+
+          >
+             <l-icon
+                        :icon-size="bike.iconSize"
+                        :icon-url="icon" />
+                        <l-popup>Hello!</l-popup>
+          </l-marker>
+
       </l-map>
         {{bikes}}
         <!-- <h2>map</h2> -->
@@ -10,7 +21,10 @@
 </template>
 
 <script>
-import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
+import { latLng } from "leaflet";
+import {LMap, LTileLayer, LMarker, LIcon, LPopup} from 'vue2-leaflet';
+import  bike  from '../assets/bike-icon.jpg';
+
 // import mapboxgl   from 'mapbox-gl/dist/mapbox-gl.js';
 // import 'mapbox-gl/dist/mapbox-gl.css';
 // bug with this package ?
@@ -20,16 +34,19 @@ import {LMap, LTileLayer, LMarker} from 'vue2-leaflet';
 export default {
     name: "ZoovMap",
     props: {
-        bikes: Array
+      bikes: [],
     },
     data() {
     return {
       // accessToken: 'pk.eyJ1IjoiZGx5Zjc1IiwiYSI6ImNrdXF5aWt0dTA4ejIydm8yMGU2ZThoY3oifQ.K__SRuLxuUJSdrJPDdlu8w',
-      url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?title=view&access_token=pk.eyJ1IjoiZGx5Zjc1IiwiYSI6ImNrdXF5aWt0dTA4ejIydm8yMGU2ZThoY3oifQ.K__SRuLxuUJSdrJPDdlu8w&zoomwheel=true&fresh=true#9/37.78/-122.4241',
+      url: 'https://api.mapbox.com/styles/v1/mapbox/streets-v10/tiles/256/{z}/{x}/{y}?title=view&access_token=pk.eyJ1IjoiZGx5Zjc1IiwiYSI6ImNrdXF5aWt0dTA4ejIydm8yMGU2ZThoY3oifQ.K__SRuLxuUJSdrJPDdlu8w',
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      zoom: 15,
-      center: [51.505, -0.159],
-      markerLatLng: [51.504, -0.159]
+      zoom: 17,
+      center: latLng(47.313220, -1.319482),
+      markerLatLng: latLng(48.7546, 2.30082),
+      // icon: bike,
+      icon: bike,
+      iconSize: [15, 15]
     };
   },
   // mounted() {
@@ -85,10 +102,12 @@ export default {
     // },
 
   components: {
-    LMap, LTileLayer, LMarker
+    LMap, LTileLayer, LMarker, LIcon, LPopup
   },
   methods: {
-
+    latLng: function(lng, lat) {
+      return latLng(lng,lat);
+    }
   }
 }
 </script>
@@ -101,6 +120,11 @@ export default {
   height: 180px;
 
 }
+
+.bike-icon {
+   height: 50px;
+   width: auto;
+ }
 
 
 </style>
