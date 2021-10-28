@@ -5,7 +5,7 @@
           <l-marker
            :key="item.id"
            v-for="(bike, item) in bikes"
-           :lat-lng="latLng(bike.location.coordinates, bike.service_status)"
+           :lat-lng="latLng(bike.location.coordinates.slice().reverse(), bike.service_status)"
 
           >
              <l-icon
